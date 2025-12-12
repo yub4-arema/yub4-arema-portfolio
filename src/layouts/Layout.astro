@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content="湯葉あれまのポートフォリオサイト - プログラミング初心者のWeb開発者" />
+		<title>湯葉あれま | Portfolio</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+
+<style>
+	html {
+		scroll-behavior: smooth;
+	}
+	
+	html,
+	body {
+		margin: 0;
+		width: 100%;
+		min-height: 100vh;
+		background-size: 40px 40px;
+		background-image: url("/photos/bredge.jpg");
+		background-repeat: no-repeat;
+		background-position: center;
+		background-attachment: fixed;
+		background-size: cover;
+		font-family: "Zen Kaku Gothic New", sans-serif;
+		font-weight: 400;
+		font-style: normal;
+		overflow-x: hidden;
+	}
+
+	/* Custom Scrollbar */
+	::-webkit-scrollbar {
+		width: 8px;
+	}
+
+	::-webkit-scrollbar-track {
+		background: rgba(0, 0, 0, 0.1);
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: linear-gradient(180deg, #A60A0A, #3F4EA6);
+		border-radius: 4px;
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+		background: linear-gradient(180deg, #8B0000, #2F3E96);
+	}
+
+	/* Selection Style */
+	::selection {
+		background: rgba(166, 10, 10, 0.3);
+		color: #333;
+	}
+</style>

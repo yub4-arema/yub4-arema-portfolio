@@ -1,0 +1,77 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-logo">
+      <span class="logo-text">湯葉あれま</span>
+      <p class="footer-tagline">Building the future, one line at a time.</p>
+    </div>
+    <div class="footer-divider"></div>
+    <p class="copyright">© {currentYear} Yuba Arema. All rights reserved.</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    width: 100%;
+    background: linear-gradient(135deg, rgba(30, 30, 30, 0.95), rgba(50, 50, 50, 0.95));
+    color: white;
+    padding: 3rem 2rem 2rem;
+    margin-top: 4rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, #A60A0A, #3F4EA6);
+    border-radius: 2px;
+  }
+
+  .footer-content {
+    max-width: 50rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .footer-logo {
+    margin-bottom: 1.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #fff, #ccc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .footer-tagline {
+    color: #aaa;
+    font-size: 0.9rem;
+    margin: 0.5rem 0 0 0;
+    font-style: italic;
+  }
+
+  .footer-divider {
+    width: 60%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    margin: 1.5rem auto;
+  }
+
+  .copyright {
+    color: #888;
+    font-size: 0.85rem;
+    margin: 0;
+  }
+</style>
