@@ -5,8 +5,8 @@ const {sns,id, icon , bgColor, href} = Astro.props;
 <a
   href={href}
   style={`background-color: ${bgColor};`}
-  class="flex items-center no-underline p-4 rounded-lg mx-auto w-40 text-white"
+  class="flex items-center no-underline p-4 rounded-lg mx-auto text-white text-lg  "
 >
   <img src={icon} alt={`${sns} icon`} class="h-8 mr-auto" />
-  <span>{id}</span>
+  <span class="ml-4">{id}</span>
 </a>

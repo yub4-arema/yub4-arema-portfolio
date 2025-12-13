@@ -39,8 +39,8 @@ const snsList = [
         alt="Yubarema Logo"
         class="w-[50vw] max-w-[30rem] rounded-full relative z-10 shadow-[0_4px_24px_#F2DAAC55] mt-[-5rem] mx-auto"
       />
-      <h1 class="text-3xl font-bold">湯葉あれま</h1>
-      <p class="text-lg">プログラミングができなくてぇ...</p>
+      <h1 class="text-3xl font-bold m-[1rem]">湯葉あれま</h1>
+      <p class="m-[1rem]">プログラミングができなくてぇ...</p>
       <div class="flex gap-4 mt-8 flex-wrap justify-center">
         {snsList.map(({sns, id, icon, bgColor, href}) => (
           <Sns sns={sns} id={id} icon={icon} bgColor={bgColor} href={href} />
@@ -48,9 +48,9 @@ const snsList = [
       </div>
     </div>
     
-    <div class="p-8 mt-8 w-[75vw] max-w-[50rem] bg-white/80 rounded-[1vh] relative z-10 [&_p]:text-lg [&_a]:no-underline [&_a]:text-[#3F4EA6] [&_a]:font-bold">
+    <div class="p-8 mt-8 w-[75vw] max-w-[50rem] bg-white/80 rounded-[1vh] relative z-10 [&_p]:text-lg [&_a]:no-underline [&_a]:text-[#3F4EA6] [&_a]:font-bold [&_a:hover]:underline [&_h2]:text-xl [&_h2]:font-bold [&_h2]:mt-6 [&_h2]:mb-3 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:space-y-1 [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:space-y-1 [&_li]:leading-relaxed">
       <h1 class="text-2xl font-bold">About Me</h1>
-      <AboutMe />
+      <AboutMe class="mt-4" />
     </div>
 
     <Footer />
