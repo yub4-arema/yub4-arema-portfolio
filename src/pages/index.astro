@@ -1,8 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Sns from "../components/sns.astro";
+import Sns from "../components/Sns.astro";
 import Footer from "../components/Footer.astro";
-import AboutMe from "./aboutme/about_me.md";
+import AboutMe from "./aboutme/_about_me.md";
 
 const snsList = [
   {
@@ -23,108 +23,36 @@ const snsList = [
     sns: "zenn",
     id: "yub4_arema",
     icon: "/icons/logo-only.svg",
-    bgColor: "rgba(62,168,255, 0.7)",
+    bgColor: "rgba(62,168,255, 0.5)",
     href: "https://zenn.dev/yub4_arema",
   }
 ];
 ---
 
 <Layout>
-  <div class="all">
-    <div class="icon-box box">
-      <img src="/photos/iconpin.png" alt="Yubarema Logo" class="icon" />
-      <h1>湯葉あれま</h1>
-      <p>プログラミングができなくてぇ...</p>
-      <div class="sns-container">
+  <div
+    class="min-h-screen flex flex-col items-center relative z-[1] text-black/80 text-lg after:content-[''] after:absolute after:top-[10%] after:bottom-[80%] after:left-0 after:right-0 after:bg-[#A60A0A] after:opacity-100 after:-skew-y-[15deg] after:z-0"
+  >
+    <div class="p-8 w-[75vw] max-w-[50rem] bg-white/80 rounded-[1vh] relative z-10 flex flex-col text-center mt-40">
+      <img
+        src="/photos/iconpin.png"
+        alt="Yubarema Logo"
+        class="w-[50vw] max-w-[30rem] rounded-full relative z-10 shadow-[0_4px_24px_#F2DAAC55] mt-[-5rem] mx-auto"
+      />
+      <h1 class="text-3xl font-bold">湯葉あれま</h1>
+      <p class="text-lg">プログラミングができなくてぇ...</p>
+      <div class="flex gap-4 mt-8 flex-wrap justify-center">
         {snsList.map(({sns, id, icon, bgColor, href}) => (
           <Sns sns={sns} id={id} icon={icon} bgColor={bgColor} href={href} />
         ))}
       </div>
     </div>
     
-    <div class="box">
-      <h1>About Me</h1>
+    <div class="p-8 mt-8 w-[75vw] max-w-[50rem] bg-white/80 rounded-[1vh] relative z-10 [&_p]:text-lg [&_a]:no-underline [&_a]:text-[#3F4EA6] [&_a]:font-bold">
+      <h1 class="text-2xl font-bold">About Me</h1>
       <AboutMe />
     </div>
 
     <Footer />
   </div>
 </Layout>
-
-<style is:global>
-
-  .all {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: rgba(49, 56, 32, 0);
-    position: relative;
-    z-index: 1;
-    color: rgba(0, 0, 0, 0.781);
-    font-size: 1.2rem;
-  }
-  .header {
-    color: rgba(235, 242, 22, 0.9);
-    font-family: impact;
-    font-size: 2.5rem;
-    z-index: 2;
-    letter-spacing: 0.2em;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .icon {
-    width: 50vw;
-    max-width: 30rem;
-    border-radius: 50%;
-    position: relative;
-    z-index: 2;
-    box-shadow: 0 4px 24px #F2DAAC55;
-    margin-top: -5rem;
-  }
-  .box{
-    padding: 2rem;
-    margin-top: 2rem;
-    width: 75vw;
-    max-width: 50rem;
-    background-color: rgba(255, 255, 255, 0.8); 
-    border-radius: 1vh;
-    position: relative;
-    z-index: 2;
-  }
-  .icon-box {
-    flex-direction: column;
-    text-align: center;
-    padding: 2rem;
-    margin-top: 10rem;
-  }
-  .sns-container {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
-    flex-wrap: wrap;
-  }
-
-  .all::after {
-    content: '';
-    position: absolute;
-    top: 10%;
-    bottom: 80%;
-    left: 0%;
-    right: 0%;
-    background-color: #A60A0A;
-    opacity: 1;
-    transform: skewY(-15deg);
-    z-index: 0;
-  }
-  p{
-    font-size: 1.2rem;
-  }
-  a{
-    text-decoration: none;
-    color: #3F4EA6;
-    font-weight: bold;
-  }
-</style>
