@@ -49,3 +49,52 @@ body {
 	background: rgba(166, 10, 10, 0.3);
 	color: #333;
 }
+
+.markdown-content {
+	width: 100%;
+	color: rgba(0, 0, 0, 0.85);
+	line-height: 1.8;
+	text-align: left;
+}
+
+.markdown-content :where(p, ul, ol, blockquote) {
+	margin: 0.75rem 0;
+}
+
+.markdown-content :where(h1, h2, h3) {
+	margin: 1.5rem 0 0.75rem;
+	font-weight: 700;
+}
+
+.markdown-content :where(h1) {
+	font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+}
+
+.markdown-content :where(h2) {
+	font-size: clamp(1.3rem, 2vw, 1.8rem);
+}
+
+.markdown-content :where(h3) {
+	font-size: clamp(1.15rem, 1.5vw, 1.4rem);
+}
+
+.markdown-content :where(ul) {
+	padding-left: 1.25rem;
+	list-style: disc;
+}
+
+.markdown-content :where(ol) {
+	padding-left: 1.25rem;
+	list-style: decimal;
+}
+
+.markdown-content a {
+	color: #3f4ea6;
+	text-decoration: underline;
+}
+
+.markdown-content blockquote {
+	padding-left: 1rem;
+	border-left: 3px solid rgba(63, 78, 166, 0.4);
+	color: rgba(0, 0, 0, 0.7);
+}

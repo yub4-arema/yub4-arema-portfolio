@@ -1,0 +1,47 @@
+---
+const { title, description, image, href } = Astro.props;
+
+const hasLink = typeof href === "string" && href.length > 0;
+---
+
+<article
+  class="w-full bg-[rgba(200,200,200,0.3)] p-6 flex flex-col gap-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+>
+  <div class="flex flex-col gap-4 md:flex-row">
+    <div
+      class="h-auto flex-1 shadow-md p-0.5 rounded-lg bg-[rgba(13,13,13,0.4)] flex flex-col max-w-[360px] md:max-w-none mx-auto md:mx-0"
+    >
+      <img
+        src={image ? image : "/photos/comingsoon.png"}
+        alt={title ? title : "タイトルがないよー！！制作者の程度が知れるね！！"}
+        class="h-auto w-full object-cover rounded-lg"
+      />
+    </div>
+    <div class="flex flex-col justify-center flex-1 w-auto space-y-3 px-1 md:px-4">
+      <h2 class="text-3xl font-bold leading-tight tracking-wide">
+        {title ? title : "タイトルがないよー！！制作者の程度が知れるね！！"}
+      </h2>
+      <p class="text-left leading-relaxed text-base md:text-lg">
+        {
+          description
+            ? description
+            : "まだ公開できる情報がないよー制作者の程度が知れるね！！"
+        }
+      </p>
+      {
+        hasLink ? (
+          <a
+            href={href}
+            class="w-fit max-w-xs m-2 mt-4 p-2 bg-[#3F4EA6] text-white rounded-lg hover:bg-[#2c3a8c] transition-colors duration-300"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View More
+          </a>
+        ) : (
+          "リンクがないよー！！制作者の程度が知れるね！！"
+        )
+      }
+    </div>
+  </div>
+</article>
