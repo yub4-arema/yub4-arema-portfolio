@@ -42,19 +42,21 @@ const workList = [
 <Layout>
   <>
     <div
-      class="bg-[url('/photos/bridge.jpg')] bg-cover h-[100vh] w-[100vw] flex flex-col justify-center items-center text-center"
+      class="bg-cover h-[100vh] w-[100vw] flex flex-col justify-center items-center text-center"
     >
       <div
-        class="bg-[rgba(255,255,255,0.6)] bg-opacity-50 p-8 rounded-lg w-[75vw] flex flex-col justify-center items-center"
+        class="bg-[rgba(230,230,230,0.5)] bg-opacity-50 p-8 rounded-lg w-[75vw] flex flex-col justify-center items-center text-white"
       >
         <img
           src="/photos/iconpin.png"
-          class="rounded-[50%] w-[30vw] max-w-[50rem] mt-[-10vh] mb-[1rem]"
+          class="rounded-[50%] h-[clamp(7rem,30vh,50rem)] mt-[-10vh] mb-[1rem]"
           alt="Yubarema Logo"
         />
-        <h1 class="text-[1.7rem]">湯葉あれま</h1>
-        <p class="text-[1.2rem]">プログラミングができなくてぇ...</p>
-        <div class="flex flex-wrap mt-4">
+        <h1 class="text-[clamp(1rem,5vw,2rem)]">湯葉あれま</h1>
+        <p class="text-[clamp(1rem,2vw,1.2rem)]">
+          プログラミングができなくてぇ...
+        </p>
+        <div class="flex flex-wrap mt-4 items-center justify-center">
           {
             snsList.map(({ sns, id, icon, bgColor, href }) => (
               <Sns
@@ -69,29 +71,29 @@ const workList = [
         </div>
       </div>
     </div>
-    <div>
-      <h1>About Me</h1>
-      <div class="markdown-content">
-        <AboutMe />
-      </div>
-    </div>
-
-    <div>
-      <h1>Works</h1>
+    <div class="bg-white">
       <div>
-        {
-          workList.map(({ title, description, image, href }) => (
-            <Work
-              title={title}
-              description={description}
-              image={image}
-              href={href}
-            />
-          ))
-        }
+        <h1>About Me</h1>
+        <div class="markdown-content">
+          <AboutMe />
+        </div>
+      </div>
+
+      <div>
+        <h1>Works</h1>
+        <div>
+          {
+            workList.map(({ title, description, image, href }) => (
+              <Work
+                title={title}
+                description={description}
+                image={image}
+                href={href}
+              />
+            ))
+          }
+        </div>
       </div>
     </div>
-
-    <Footer />
   </>
 </Layout>

@@ -20,6 +20,13 @@ body {
 	font-style: normal;
 	overflow-x: hidden;
 	font-size: 1.2rem;
+	background-image: url('/photos/bridge.jpg');
+	background-size: cover;
+	background-attachment: fixed;
+	background-position: center;
+	background-blend-mode: multiply;
+	background-color: rgba(238, 242, 121, 0.2); 
+
 }
 
 /* Custom Scrollbar */
