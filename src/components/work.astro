@@ -4,19 +4,23 @@ const { title, description, image, href } = Astro.props;
 const hasLink = typeof href === "string" && href.length > 0;
 ---
 
-<article>
-  <div>
-    <div>
+<article class="group cursor-pointer">
+  <div class="bg-white rounded-lg overflow-hidden duration-300 border-2 border-[#EBF213] p-1">
+    {/* Image Container */}
+    <div class="relative overflow-hidden bg-gray-100 aspect-video">
       <img
         src={image ? image : "/photos/comingsoon.png"}
         alt={title ? title : "タイトルがないよー！！制作者の程度が知れるね！！"}
+        class="aspect-video"
       />
     </div>
-    <div>
-      <h2>
+
+    {/* Content Container */}
+    <div class="p-[clamp(1.5rem,4vw,2rem)]">
+      <h3 class="text-[clamp(1.2rem,3vw,1.5rem)] font-bold text-[#0D0D0D] mb-3 group-hover:text-[#A60A0A] transition-colors duration-300">
         {title ? title : "タイトルがないよー！！制作者の程度が知れるね！！"}
-      </h2>
-      <p>
+      </h3>
+      <p class="text-[clamp(0.9rem,2vw,1rem)] text-[#333333] mb-4 leading-relaxed">
         {
           description
             ? description
@@ -27,11 +31,12 @@ const hasLink = typeof href === "string" && href.length > 0;
         hasLink ? (
           <a
             href={href}
+            class="inline-flex items-center gap-2 px-4 py-2 bg-white text-[#A60A0A] rounded-md border-2 font-bold text-[clamp(0.85rem,2vw,0.95rem)] border border-[#A60A0A] hover:bg-[#A60A0A] hover:text-white"
           >
-            View More
+            詳細を見る →
           </a>
         ) : (
-          "リンクがないよー！！制作者の程度が知れるね！！"
+          <p class="text-[0.85rem] text-gray-400">リンクがないよー！！</p>
         )
       }
     </div>

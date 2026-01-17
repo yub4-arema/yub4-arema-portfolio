@@ -11,6 +11,7 @@ const snsList = [
     id: "@yub4-arema",
     icon: "/icons/github-mark-white.svg",
     bgColor: "rgba(30,30, 30, 0.8)",
+    idColor: "white",
     href: "https://github.com/yub4-arema",
   },
   {
@@ -18,13 +19,15 @@ const snsList = [
     id: "@yub4_arema",
     icon: "/icons/logo-white.png",
     bgColor: "rgba(0, 0, 0, 0.9)",
+    idColor: "white",
     href: "https://twitter.com/yub4_arema",
   },
   {
     sns: "zenn",
     id: "yub4_arema",
     icon: "/icons/logo-only.svg",
-    bgColor: "rgba(62,168,255, 0.6)",
+    bgColor: "rgba(255,255,255, 0.5)",
+    idColor: "black",
     href: "https://zenn.dev/yub4_arema",
   },
 ];
@@ -41,29 +44,31 @@ const workList = [
 
 <Layout>
   <>
-    <div
-      class="bg-cover h-[100vh] w-[100vw] flex flex-col justify-center items-center text-center"
-    >
-      <div
-        class="bg-[rgba(230,230,230,0.5)] bg-opacity-50 p-8 rounded-lg w-[75vw] flex flex-col justify-center items-center text-white"
-      >
+    <div class="hero-section">
+      <div class="hero-card">
+        <div class="hero-intro">
+        <div class="hero-avatar-container">
         <img
           src="/photos/iconpin.png"
-          class="rounded-[50%] h-[clamp(7rem,30vh,50rem)] mt-[-10vh] mb-[1rem]"
+          class="hero-avatar"
           alt="Yubarema Logo"
         />
-        <h1 class="text-[clamp(1rem,5vw,2rem)]">湯葉あれま</h1>
-        <p class="text-[clamp(1rem,2vw,1.2rem)]">
-          プログラミングができなくてぇ...
-        </p>
-        <div class="flex flex-wrap mt-4 items-center justify-center">
+        </div>
+        <div class="hero-sentence">
+        <h1 class="hero-name">湯葉あれま</h1>
+        <p class="hero-id">@yub4-arema</p>
+        <p class="hero-tagline">プログラミングができなくてぇ...</p>
+        </div>
+        </div>
+        <div class="hero-sns">
           {
-            snsList.map(({ sns, id, icon, bgColor, href }) => (
+            snsList.map(({ sns, id, icon, bgColor, idColor, href }) => (
               <Sns
                 sns={sns}
                 id={id}
                 icon={icon}
                 bgColor={bgColor}
+                idColor={idColor}
                 href={href}
               />
             ))
@@ -71,17 +76,21 @@ const workList = [
         </div>
       </div>
     </div>
-    <div class="bg-white">
-      <div>
-        <h1>About Me</h1>
-        <div class="markdown-content">
+    <div class="main-sections">
+      <div class="section-card">
+        <div class="section-header">
+          <h2 class="section-title">About Me</h2>
+        </div>
+        <div class="aboutme-content">
           <AboutMe />
         </div>
       </div>
 
-      <div>
-        <h1>Works</h1>
-        <div>
+      <div class="section-card">
+        <div class="section-header">
+          <h2 class="section-title">Works</h2>
+        </div>
+        <div class="works-grid">
           {
             workList.map(({ title, description, image, href }) => (
               <Work
@@ -97,3 +106,130 @@ const workList = [
     </div>
   </>
 </Layout>
+<style>
+  .hero-section {
+    background-color: rgba(230, 230, 230, 0.3);
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+  }
+
+  .hero-card {
+    background-color: rgba(230, 230, 230, 0.5);
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+  }
+
+  .hero-intro {
+    display: flex;
+    padding: 1rem;
+    gap: 4rem;
+  }
+
+
+  .hero-avatar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .hero-sentence {
+    margin-top: -8vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .hero-avatar {
+    border-radius: 50%;
+    width: clamp(10rem, 40vw, 20rem);
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    margin-top: -15vh;
+    margin-bottom: 1rem;
+  }
+
+  .hero-sns {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .hero-name {
+    font-size: 2.5vw;
+    font-weight: bold;
+  }
+
+  .hero-id {
+color: rgba(50, 50,50, 1);
+  }
+
+  .hero-tagline {
+    font-size: clamp(1rem, 3vw, 1.4rem);
+  }
+
+  .main-sections {
+    background-color: #fff;
+    padding-top: clamp(3rem, 8vw, 6rem);
+    padding-bottom: clamp(3rem, 8vw, 6rem);
+  }
+
+  .section-card {
+    box-shadow:
+      0 20px 25px -5px rgba(0, 0, 0, 0.1),
+      0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    margin: clamp(1rem, 6vw, 4rem);
+    padding: clamp(1rem, 6vw, 3rem);
+    border-radius: 1rem;
+  }
+
+  .section-header {
+    border-left: 4px solid #a60a0a;
+    padding-left: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 700;
+    color: #0d0d0d;
+    margin-bottom: 1rem;
+  }
+
+  .aboutme-content {
+    color: #0d0d0d;
+    line-height: 1.625;
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+  }
+
+  .aboutme-content > * + * {
+    margin-top: 1rem;
+  }
+
+  .works-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(2rem, 4vw, 3rem);
+  }
+
+  @media (min-width: 768px) {
+    .works-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>

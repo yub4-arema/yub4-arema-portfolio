@@ -53,3 +53,100 @@ body {
 	color: #333;
 }
 
+
+.markdown-content h2 {
+	color: #0D0D0D;
+	font-size: clamp(1.2rem, 3vw, 1.5rem);
+	font-weight: bold;
+	margin-top: 1.5em;
+	margin-bottom: 0.75em;
+	padding-bottom: 0.5em;
+	border-bottom: 2px solid rgba(166, 10, 10, 0.5);
+	display: inline-block;
+}
+
+.markdown-content h3 {
+	color: #0D0D0D;
+	font-weight: 600;
+	margin-top: 1.25em;
+	margin-bottom: 0.5em;
+}
+
+.markdown-content p {
+	color: #333333;
+	font-size: clamp(0.95rem, 2vw, 1.1rem);
+	line-height: 1.8;
+	margin-bottom: 1em;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+	margin-left: 1.5em;
+	margin-bottom: 1.5em;
+	color: #333333;
+}
+
+.markdown-content li {
+	margin-bottom: 0.5em;
+	font-size: clamp(0.95rem, 2vw, 1.1rem);
+	line-height: 1.6;
+}
+
+.markdown-content li strong {
+	color: #A60A0A;
+	font-weight: 600;
+}
+
+.markdown-content a {
+	color: #A60A0A;
+	text-decoration: none;
+	font-weight: 500;
+	position: relative;
+	transition: color 0.2s ease;
+}
+
+.markdown-content a:hover {
+	color: #A60A0A;
+	text-decoration: underline;
+}
+
+.markdown-content a::after {
+	content: '';
+	position: absolute;
+	bottom: -2px;
+	left: 0;
+	width: 0;
+	height: 2px;
+	background-color: rgba(235, 242, 19, 0.5);
+	transition: width 0.2s ease;
+}
+
+.markdown-content a:hover::after {
+	width: 100%;
+}
+
+.markdown-content code {
+	background-color: rgba(235, 242, 19, 0.08);
+	color: #A60A0A;
+	padding: 0.2em 0.4em;
+	border-radius: 4px;
+	font-family: 'Courier New', monospace;
+	font-size: 0.9em;
+}
+
+.markdown-content blockquote {
+	border-left: 4px solid #A60A0A;
+	padding-left: 1em;
+	margin-left: 0;
+	margin-right: 0;
+	margin-bottom: 1.5em;
+	color: #555555;
+	font-style: italic;
+}
+
+.markdown-content hr {
+	border: none;
+	height: 1px;
+	background: linear-gradient(to right, transparent, rgba(166, 10, 10, 0.4), transparent);
+	margin: 2em 0;
+}
