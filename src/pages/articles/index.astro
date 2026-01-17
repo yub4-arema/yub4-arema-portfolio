@@ -1,0 +1,113 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Article from "../../components/Article.astro";
+
+const articleList = [
+  {
+    title: "初学者のためのReactによるToDoアプリ作成手順",
+    href: "https://zenn.dev/team411/articles/c44fb18bfe22c2",
+    date: "2025/12/05に公開",
+    service: "Zenn",
+  },
+  {
+    title: "Geminiは馬鹿である（20251221現在）",
+    href: "https://sizu.me/yub4_arema/posts/s6uft646nu3h",
+    date: "2025/12/21に公開",
+    service: "Sizu.me",
+  },
+];
+---
+
+<Layout>
+  <section class="articles-page">
+    <header class="articles-header">
+      <p class="articles-eyebrow">Articles</p>
+      <h1 class="articles-title">記事一覧</h1>
+    </header>
+
+    <a class="back-button" href="/">← 戻る</a>
+
+    <div class="articles-list">
+      {
+        articleList.map(({ title, href, date, service }) => (
+          <Article title={title} href={href} date={date} service={service} />
+        ))
+      }
+    </div>
+  </section>
+
+  <style>
+    .articles-page {
+      min-height: 100vh;
+      padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 6vw, 4rem);
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .articles-header {
+      width: clamp(320px, 60%, 1200px);
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.95);
+      padding: clamp(1.5rem, 4vw, 2.5rem);
+      border-radius: 1rem;
+      box-shadow:
+        0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .articles-eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 0.75rem;
+      color: rgba(0, 0, 0, 0.5);
+      margin-bottom: 0.75rem;
+    }
+
+    .articles-title {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      color: #0d0d0d;
+      margin-bottom: 0.5rem;
+    }
+
+    .articles-lead {
+      color: rgba(0, 0, 0, 0.7);
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      line-height: 1.6;
+    }
+
+    .articles-list {
+      width: clamp(320px, 60%, 1200px);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .back-button {
+      width: clamp(320px, 60%, 1200px);
+      margin: 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.25rem;
+      border-radius: 999px;
+      border: 2px solid #a60a0a;
+      color: #a60a0a;
+      background: #fff;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+
+    .back-button:hover {
+      background: #a60a0a;
+      color: #fff;
+      transform: translateY(-1px);
+    }
+  </style>
+</Layout>

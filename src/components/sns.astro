@@ -22,11 +22,11 @@ const {sns, id, icon, bgColor, href, idColor} = Astro.props;
     opacity: 0;          /* 最初は透明 */
     transform: translateX(-4px);
     transition:
-      max-width 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      max-width 0.7s cubic-bezier(0.4, 0, 0.2, 1),
       opacity 0.5s ease,
-      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-      padding 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-      margin 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+      transform 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+      padding 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+      margin 0.7s cubic-bezier(0.4, 0, 0.2, 1);
     font-weight: bold;
     font-size: clamp(0.7rem, 1.5vw, 1rem);
   }
@@ -43,7 +43,7 @@ const {sns, id, icon, bgColor, href, idColor} = Astro.props;
   /* 背景をさらに「ぬるっ」とさせたい場合、hover時のaタグ自体に transition を追加 */
   a {
     transition:
-      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.4, 0, 0.2, 1),
       background-color 0.7s ease;
     will-change: transform;
   }

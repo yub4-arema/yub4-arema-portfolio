@@ -5,9 +5,9 @@ const hasLink = typeof href === "string" && href.length > 0;
 ---
 
 <article class="group cursor-pointer">
-  <div class="bg-white rounded-lg overflow-hidden duration-300 border-2 border-[#EBF213] p-1">
+  <div class="bg-white rounded-lg overflow-hidden duration-300 border-4 border-[#7f7f7f] p-1 ">
     {/* Image Container */}
-    <div class="relative overflow-hidden bg-gray-100 aspect-video">
+    <div class="relative overflow-hidden bg-gray-100 aspect-video ">
       <img
         src={image ? image : "/photos/comingsoon.png"}
         alt={title ? title : "タイトルがないよー！！制作者の程度が知れるね！！"}
@@ -16,11 +16,11 @@ const hasLink = typeof href === "string" && href.length > 0;
     </div>
 
     {/* Content Container */}
-    <div class="p-[clamp(1.5rem,4vw,2rem)]">
-      <h3 class="text-[clamp(1.2rem,3vw,1.5rem)] font-bold text-[#0D0D0D] mb-3 group-hover:text-[#A60A0A] transition-colors duration-300">
+    <div class="p-2">
+      <h3 class="text-[clamp(1.2rem,3vw,1.5rem)] font-bold text-[#0D0D0D] mb-1 group-hover:text-[#A60A0A] transition-colors duration-300">
         {title ? title : "タイトルがないよー！！制作者の程度が知れるね！！"}
       </h3>
-      <p class="text-[clamp(0.9rem,2vw,1rem)] text-[#333333] mb-4 leading-relaxed">
+      <p class="text-[clamp(0.9rem,2vw,1rem)] text-[#333333] leading-relaxed mb-1">
         {
           description
             ? description

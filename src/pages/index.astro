@@ -4,6 +4,26 @@ import Sns from "../components/Sns.astro";
 import Footer from "../components/Footer.astro";
 import AboutMe from "./aboutme/about_me.md";
 import Work from "../components/work.astro";
+import TimelineItem from "../components/Timeline.astro";
+import Article from "../components/Article.astro";
+
+const timelineData = [
+  {
+    date: "2006-09",
+    title: "爆誕",
+    content: "最初に話した言葉は天上天下唯我独尊.",
+  },
+    {
+    date: "2022-04",
+    title: "都立新宿高等学校入学",
+    content: "弓道部は半年で幽霊と化す.放送部に染まり、癒着先の生徒会に染まる.",
+  },
+  {
+    date: "2025-04",
+    title: "電気通信大学入学",
+    content: "電気通信大学一類に入学,あとteam411に加入",
+  },
+];
 
 const snsList = [
   {
@@ -37,7 +57,22 @@ const workList = [
     title: "25_bot",
     description: "UEC25生のtwitter投稿を取得するLLMと会話ができるbotです。",
     image: "/photos/works/25_bot.png",
-    href: "src/pages/works/25_bot.astro",
+    href: "https://25bot.vercel.app/",
+  },
+];
+
+const articleList = [
+  {
+    title: "初学者のためのReactによるToDoアプリ作成手順",
+    href: "https://zenn.dev/team411/articles/c44fb18bfe22c2",
+    date: "2025/12/05に公開",
+    service: "Zenn",
+  },
+  {
+    title: "Geminiは馬鹿である（20251221現在）",
+    href: "https://sizu.me/yub4_arema/posts/s6uft646nu3h",
+    date: "2025/12/21に公開",
+    service: "Sizu.me",
   },
 ];
 ---
@@ -47,18 +82,18 @@ const workList = [
     <div class="hero-section">
       <div class="hero-card">
         <div class="hero-intro">
-        <div class="hero-avatar-container">
-        <img
-          src="/photos/iconpin.png"
-          class="hero-avatar"
-          alt="Yubarema Logo"
-        />
-        </div>
-        <div class="hero-sentence">
-        <h1 class="hero-name">湯葉あれま</h1>
-        <p class="hero-id">@yub4-arema</p>
-        <p class="hero-tagline">プログラミングができなくてぇ...</p>
-        </div>
+          <div class="hero-avatar-container">
+            <img
+              src="/photos/iconpin.png"
+              class="hero-avatar"
+              alt="Yubarema Logo"
+            />
+          </div>
+          <div class="hero-sentence">
+            <h1 class="hero-name">湯葉あれま</h1>
+            <p class="hero-id">@yub4-arema</p>
+            <p class="hero-tagline">プログラミングができなくてぇ...</p>
+          </div>
         </div>
         <div class="hero-sns">
           {
@@ -76,160 +111,304 @@ const workList = [
         </div>
       </div>
     </div>
+    <div class="spacer"></div>
     <div class="main-sections">
-      <div class="section-card">
-        <div class="section-header">
-          <h2 class="section-title">About Me</h2>
+      <div class="section-cards">
+        <div class="section-card">
+          <div class="section-header">
+            <h2 class="section-title">About Me</h2>
+          </div>
+          <div class="aboutme-content">
+            <AboutMe />
+          </div>
         </div>
-        <div class="aboutme-content">
-          <AboutMe />
+        <div class="section-card">
+          <div class="section-header">
+            <h2 class="section-title">GreatestHistory</h2>
+          </div>
+
+          <ol class="relative border-l border-[#EEF279] ml-3">
+            {
+              timelineData.map(({ date, title, content }) => (
+                <TimelineItem date={date} title={title}>
+                  {content}
+                </TimelineItem>
+              ))
+            }
+          </ol>
         </div>
       </div>
 
-      <div class="section-card">
-        <div class="section-header">
-          <h2 class="section-title">Works</h2>
-        </div>
-        <div class="works-grid">
-          {
-            workList.map(({ title, description, image, href }) => (
-              <Work
-                title={title}
-                description={description}
-                image={image}
-                href={href}
-              />
-            ))
-          }
+        <div class="section-cards">
+          <div class="section-card">
+            <div class="section-header">
+              <h2 class="section-title">SomeWorks</h2>
+            </div>
+            <div class="works-grid">
+              {
+                workList.map(({ title, description, image, href }) => (
+                  <Work
+                    title={title}
+                    description={description}
+                    image={image}
+                    href={href}
+                  />
+                ))
+              }
+            </div>
+          </div>
+          <div class="section-card">
+            <div class="section-header">
+              <h2 class="section-title">RecentArticles</h2>
+            </div>
+            <div class="articles-list">
+              {
+                articleList.map(({ title, href, date, service }) => (
+                  <Article
+                    title={title}
+                    href={href}
+                    date={date}
+                    service={service}
+                  />
+                ))
+              }
+            </div>
+            <a
+              class="inline-flex items-center text-center gap-2 px-4 py-2 bg-white text-[#A60A0A] rounded-md border-2 font-bold text-[clamp(0.85rem,2vw,0.95rem)] border border-[#A60A0A] hover:bg-[#A60A0A] hover:text-white w-full justify-center mt-4"
+              href="/articles/"
+            >
+              その他を見る
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </>
-</Layout>
-<style>
-  .hero-section {
-    background-color: rgba(230, 230, 230, 0.3);
-    background-size: cover;
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: left;
-  }
-
-  .hero-card {
-    background-color: rgba(230, 230, 230, 0.5);
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
-    padding: 2rem;
-    border-radius: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #000;
-  }
-
-  .hero-intro {
-    display: flex;
-    padding: 1rem;
-    gap: 4rem;
-  }
-
-
-  .hero-avatar-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .hero-sentence {
-    margin-top: -8vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    text-align: left;
-  }
-
-  .hero-avatar {
-    border-radius: 50%;
-    width: clamp(10rem, 40vw, 20rem);
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    margin-top: -15vh;
-    margin-bottom: 1rem;
-  }
-
-  .hero-sns {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 1rem;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-  }
-
-  .hero-name {
-    font-size: 2.5vw;
-    font-weight: bold;
-  }
-
-  .hero-id {
-color: rgba(50, 50,50, 1);
-  }
-
-  .hero-tagline {
-    font-size: clamp(1rem, 3vw, 1.4rem);
-  }
-
-  .main-sections {
-    background-color: #fff;
-    padding-top: clamp(3rem, 8vw, 6rem);
-    padding-bottom: clamp(3rem, 8vw, 6rem);
-  }
-
-  .section-card {
-    box-shadow:
-      0 20px 25px -5px rgba(0, 0, 0, 0.1),
-      0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    margin: clamp(1rem, 6vw, 4rem);
-    padding: clamp(1rem, 6vw, 3rem);
-    border-radius: 1rem;
-  }
-
-  .section-header {
-    border-left: 4px solid #a60a0a;
-    padding-left: 1.5rem;
-    margin-bottom: 2rem;
-  }
-
-  .section-title {
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
-    font-weight: 700;
-    color: #0d0d0d;
-    margin-bottom: 1rem;
-  }
-
-  .aboutme-content {
-    color: #0d0d0d;
-    line-height: 1.625;
-    font-size: clamp(0.95rem, 2vw, 1.1rem);
-  }
-
-  .aboutme-content > * + * {
-    margin-top: 1rem;
-  }
-
-  .works-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: clamp(2rem, 4vw, 3rem);
-  }
-
-  @media (min-width: 768px) {
-    .works-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+  <style>
+    .hero-section {
+      background-color: rgba(230, 230, 230, 0.3);
+      background-size: cover;
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: left;
     }
-  }
-</style>
+
+    .hero-card {
+      background-color: rgba(230, 230, 230, 0.5);
+      box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+      padding: 2rem;
+      border-radius: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #000;
+    }
+
+    .hero-intro {
+      display: flex;
+      padding: 1rem;
+      gap: 4rem;
+    }
+
+    .hero-avatar-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-sentence {
+      margin-top: -8vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .hero-avatar {
+      border-radius: 50%;
+      width: clamp(10rem, 40vw, 20rem);
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      margin-top: -15vh;
+      margin-bottom: 1rem;
+    }
+
+    .hero-sns {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .hero-name {
+      font-size: 2.5vw;
+      font-weight: bold;
+    }
+
+    .hero-id {
+      color: rgba(50, 50, 50, 1);
+    }
+
+    .hero-tagline {
+      font-size: clamp(1rem, 3vw, 1.4rem);
+    }
+
+    .spacer {
+      background: linear-gradient(
+        180deg,
+        rgba(230, 230, 230, 0.3) 20%,
+        rgba(0, 0, 0, 0.6) 80%
+      );
+      height: 20rem;
+      width: 100%;
+    }
+
+    .main-sections {
+      flex: auto;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding-top: clamp(3rem, 8vw, 6rem);
+      padding-bottom: clamp(3rem, 8vw, 6rem);
+      gap: clamp(2rem, 6vw, 4rem);
+      padding: 2rem;
+    }
+
+    .section-cards {
+      display: flex;
+      flex-direction: column;
+      width: 40%;
+      gap: clamp(2rem, 6vw, 4rem);
+    }
+
+    .section-card {
+      background-color: rgba(255, 255, 255, 0.9);
+      box-shadow:
+        0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      padding: clamp(1rem, 6vw, 3rem);
+      border-radius: 1rem;
+      height: fit-content;
+    }
+
+    .section-header {
+      border-left: 4px solid #a60a0a;
+      padding-left: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: #0d0d0d;
+      margin-bottom: 1rem;
+    }
+
+    .aboutme-content {
+      color: #0d0d0d;
+      line-height: 1.625;
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+    }
+
+    .aboutme-content > * + * {
+      margin-top: 1rem;
+    }
+
+    .works-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: clamp(2rem, 4vw, 3rem);
+    }
+
+    .articles-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    @media (max-width: 1024px) {
+      .hero-section {
+        height: auto;
+        min-height: 100vh;
+        padding: clamp(2rem, 6vw, 4rem) 1.5rem;
+      }
+
+      .hero-card {
+        width: min(92vw, 720px);
+        padding: clamp(1.5rem, 4vw, 2.5rem);
+      }
+
+      .hero-intro {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 2rem;
+      }
+
+      .hero-sentence {
+        margin-top: 0;
+        align-items: center;
+      }
+
+      .hero-name {
+        font-size: clamp(1.8rem, 5vw, 2.4rem);
+      }
+
+      .main-sections {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .section-cards {
+        width: min(92vw, 820px);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-card {
+        width: 92vw;
+        border-radius: 1.5rem;
+      }
+
+      .hero-avatar {
+        width: clamp(8rem, 45vw, 14rem);
+        margin-top: 0;
+      }
+
+      .hero-tagline {
+        font-size: clamp(0.95rem, 4vw, 1.2rem);
+      }
+
+      .main-sections {
+        padding: 1.5rem 1rem;
+        gap: 2.5rem;
+      }
+
+      .section-card {
+        padding: clamp(1.25rem, 6vw, 2.25rem);
+      }
+
+      .section-header {
+        margin-bottom: 1.5rem;
+      }
+
+      .section-title {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+      }
+    }
+
+    @media (min-width: 768px) {
+      .works-grid {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+      }
+    }
+  </style>
+</Layout>
